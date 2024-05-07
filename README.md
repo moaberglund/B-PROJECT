@@ -3,7 +3,7 @@
 ## REST webbtjänst för fiktiv restaurang
 ### Express applikation med stöd för
 * registrering + inloggning med JWT
-* lägga till, redigera och ta bort mat som finns via skyddad route
+* lägga till, redigera och ta bort meny som finns via skyddad route
 * se och hantera bokningar på skyddad route
 * se meddelanden på skyddad route
 ---
