@@ -14,7 +14,7 @@ mongoose.connect(process.env.DATABASE).then(() => {
 });
 
 //User modell
-
+const User = require("../models/User");
 
 
 //post anrop för REGISTRERING
