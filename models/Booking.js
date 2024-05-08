@@ -31,6 +31,19 @@ const BookingSchema = new mongoose.Schema({
     }
 });
 
+
+//metod för att lagra bokningen
+//booking namn på metod
+BookingSchema.static.booking = async function (name, phone, mail, amountOfPeople, day, time) {
+    try {
+        const booking = new this({ name, phone, mail, amountOfPeople, day, time });
+        await booking.save();  //spara
+        return booking;
+    } catch (error) {
+        throw error;
+    }
+};
+
 //export
 const Booking = mongoose.model("Booking", BookingSchema);
 module.exports = Booking;
