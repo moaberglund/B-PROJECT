@@ -19,8 +19,22 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
+//Hasha lösenord
+//.pre("save") => innan det sparas
+UserSchema.pre("save", async function (next) {
+    try {
+        if (this.isNew || this.isModified("password")) {
+            const hashedPassword = await bcrypt.hash(this.password, 10);
+            this.password = hashedPassword;
+        }
+
+        next(); //gå vidare
+    } catch (error) {
+        next(error);
+    }
+});
+
+//metod för att registrera
 
 
-
-
-
+//metod för att logga in  
