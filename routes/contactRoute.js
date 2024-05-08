@@ -30,3 +30,12 @@ router.post("/contact", async (req, res) => {
 
 //get anrop för personal att se meddelanden (skyddad route)
 
+
+
+
+
+
+
+
+//exportera - skicka till server.js
+module.exports = router;
