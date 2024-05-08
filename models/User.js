@@ -34,15 +34,6 @@ UserSchema.pre("save", async function (next) {
     }
 });
 
-//Kontrollera lösenord (inmatat lösenord , hashed/sparat lösenord)
-UserSchema.methods.comparePassword = async function (password) {
-    try {
-        return await bcrypt.compare(password, this.password);
-    } catch (error) {
-        throw error;
-    }
-};
-
 //metod för att registrera
 UserSchema.static.register = async function (username, password) {
     try {
@@ -53,5 +44,15 @@ UserSchema.static.register = async function (username, password) {
         throw error;
     }
 };
+
+//Kontrollera lösenord (inmatat lösenord , hashed/sparat lösenord)
+UserSchema.methods.comparePassword = async function (password) {
+    try {
+        return await bcrypt.compare(password, this.password);
+    } catch (error) {
+        throw error;
+    }
+};
+
 
 //metod för att logga in  
