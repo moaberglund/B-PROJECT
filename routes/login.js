@@ -9,14 +9,20 @@ const router = express.Router();
 
 
 
-//post anrop för registrering
+//post anrop för REGISTRERING
+router.post("/register", async (req, res) => {
+    console.log("Registrering påbörjad")
 
-//post anrop för login
+})
+
+//post anrop för INLOGGNING
+router.post("/login", (req, res) => {
+    console.log("Inloggning påbörjad")
+})
 
 
 
 
 
-
-
+//exportera - skicka till server.js
 module.exports = router;
