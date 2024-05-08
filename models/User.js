@@ -34,7 +34,8 @@ UserSchema.pre("save", async function (next) {
     }
 });
 
-//metod för att registrera
+//metod för att lagra / registrera
+//register namn på metod
 UserSchema.static.register = async function (username, password) {
     try {
         const user = new this({ username, password });
@@ -45,7 +46,7 @@ UserSchema.static.register = async function (username, password) {
     }
 };
 
-//Kontrollera lösenord (inmatat lösenord , hashed/sparat lösenord)
+//metod för att Kontrollera lösenord (inmatat lösenord , hashed/sparat lösenord)
 UserSchema.methods.comparePassword = async function (password) {
     try {
         return await bcrypt.compare(password, this.password);
@@ -58,6 +59,7 @@ UserSchema.methods.comparePassword = async function (password) {
 //metod för att logga in  
 UserSchema.static.login = async function (username, password) {
     try {
+        //hitta användaren
         const user = await this.findOne({ username });
 
         //finns ej användaren
@@ -65,7 +67,7 @@ UserSchema.static.login = async function (username, password) {
             throw new Error("Fel användarnamn eller lösenord"); //samma på båda pga säkerhet
         }
 
-        //metoden från ovan comparePassword
+        //metoden från ovan comparePassword - kontrollera lösenord
         const isPasswordMatch = await user.comparePassword(password);
 
         //fel lösenord
