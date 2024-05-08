@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 //anslutning till databas - Atlas MongoDB
 mongoose.set("strictQuery", false);
