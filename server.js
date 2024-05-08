@@ -7,6 +7,9 @@ const cors = require("cors");
 require("dotenv").config();
 
 const loginRouter = require("./routes/login");
+const bookingRoute = require("./routes/bookingRoute");
+const contactRoute = require("./routes/contactRoute");
+const menuRoute = require("./routes/menuRoute");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,6 +23,9 @@ app.listen(port, () => {
 
 //ROUTES
 app.use("/api", loginRouter);
+app.use("/api", bookingRoute);
+app.use("/api", contactRoute);
+app.use("/api", menuRoute);
 
 
 

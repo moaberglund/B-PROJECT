@@ -3,6 +3,14 @@ const router = express.Router();
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+//anslutning till databas - Atlas MongoDB
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.DATABASE).then(() => {
+    console.log("Ansluten till MongoDB!");
+}).catch((error) => {
+    console.error("Error i koppling till databasen...");
+});
+
 //Booking modell
 const Booking = require("../models/Booking");
 
