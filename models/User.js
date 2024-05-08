@@ -35,6 +35,14 @@ UserSchema.pre("save", async function (next) {
 });
 
 //metod för att registrera
-
+UserSchema.static.register = async function (username, password) {
+    try {
+        const user = new this({ username, password });
+        await user.save();  //spara
+        return user;
+    } catch (error) {
+        throw error;
+    }
+};
 
 //metod för att logga in  
