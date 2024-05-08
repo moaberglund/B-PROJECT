@@ -23,6 +23,20 @@ const ContactSchema = new mongoose.Schema({
     }
 });
 
+
+//metod för att lagra kontakt meddelande
+//contact namn på metod
+ContactSchema.static.contact = async function (name, phone, mail, textmessage ) {
+    try {
+        const contact = new this({ name, phone, mail, textmessage });
+        await contact.save();  //spara
+        return contact;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
 //export
 const Contact = mongoose.model("Contact", ContactSchema);
 module.exports = Contact;
