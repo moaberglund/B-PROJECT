@@ -37,7 +37,18 @@ router.post("/contact", async (req, res) => {
 });
 
 //get anrop för personal att se meddelanden (skyddad route)
+//importera authenticateToken 
+const authenticateToken = require("../server");
 
+router.get("/contact", authenticateToken, (req, res) => {
+    try {
+        let result = Contact.find({}); //"hitta" all data i namngiven tabell
+        return res.json(result);
+
+    } catch (error) {
+        res.status(500).json({ error: "Server error" });
+    }
+});
 
 
 
