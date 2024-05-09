@@ -49,4 +49,7 @@ function authenticateToken(req, res, next) {
         req.username = username;
         next();
     });
-}
+};
+
+
+module.exports = authenticateToken;
