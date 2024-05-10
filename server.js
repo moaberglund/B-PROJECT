@@ -26,10 +26,10 @@ app.listen(port, () => {
 });
 
 //ROUTES
-app.use("/api", loginRouter);
+app.use("/api/login", loginRouter);
 app.use("/api/booking", bookingRoute);
-app.use("/api", contactRoute);
-app.use("/api", menuRoute);
+app.use("/api/contact", contactRoute);
+app.use("/api/menu", menuRoute);
 
 
 //anslutning till databas - Atlas MongoDB
