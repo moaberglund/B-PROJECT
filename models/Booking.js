@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 const BookingSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        minLength: 10
     },
     phone: {
         type: Number,
-        required: true
+        required: true,
+        min: 9
     },
     mail: {
         type: String,
@@ -16,7 +18,9 @@ const BookingSchema = new mongoose.Schema({
     },
     amountOfPeople: {
         type: Number,
-        required: true
+        required: true,
+        min: 1,
+        max: 10
     },
     day: {
         type: Date,
