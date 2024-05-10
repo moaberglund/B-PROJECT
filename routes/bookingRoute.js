@@ -10,12 +10,12 @@ const {createBooking, getBookings} = require("../controller/bookingController");
 //ROUTES
 
 //lägga till
-router.post("/", createBooking)
+router.post("/", createBooking);
 
 
 //SKYDDAD ROUTE (??)
 //hämta och se bokning
-router.get("/", getBookings)
+router.get("/", getBookings);
 
 
 
