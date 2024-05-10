@@ -7,7 +7,8 @@ const MenuSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: Number,
@@ -36,27 +37,6 @@ MenuSchema.static.addMenu = async function (category, name, price, description) 
         throw error;
     }
 };
-
-//metod för att updatera
-//editMenu namn på metod
-MenuSchema.static.editMenu = async function (category, name, price, description) {
-    try {
-        //hitta meny
-        const menu = await this.findOne({})
-
-    } catch (error) {
-        throw error;
-    }
-}
-
-
-
-//metod för att ta bort
-//deleteMenu namn på metod
-
-
-
-
 
 
 //export
