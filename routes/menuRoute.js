@@ -50,17 +50,53 @@ router.post("/menu", authenticateToken, async (req, res) => {
 })
 
 
-
-
-
 //put på skyddad route - ändra/uppdatera
+router.put("/menu:id", authenticateToken, async (req, res) => {
+    try {
+        //få ut id:t
+        const { id } = req.params;
+        //hitta efter id:t och updatera vad som är i req.body
+        const menu = await Menu.findByIdAndUpdate(id, req.body);
+
+        //om den inte finns
+        if (!menu) {
+            return res.status(404).json({ message: "Kunde ej hitta angivet menyinlägg" })
+        }
+        //kolla efter det uppdaterade inlägget
+        const updatedMenu = await Menu.findById(id);
+        //och retunera
+        res.status(200).json(updatedMenu);
+
+
+    } catch (error) {
+        res.status(500).json({ error: "Server error" });
+    }
+})
 
 
 
 
 
 //delete på skyddad route - ta bort
+router.delete("/menu:id", authenticateToken, async (req, res) => {
+    try {
+        //få ut id:t
+        const { id } = req.params;
+        //hitta med hjälp av id och ta bort inlägg
+        let menu = await Menu.findByIdAndDelete(id);
 
+        //om det inte finns
+        if (!menu) {
+            return res.status(404).json({ message: "Kunde ej hitta angivet menyinlägg" })
+        }
+
+        res.status(200).json({ message: "Menyinlägg borttaget!" })
+
+
+    } catch (error) {
+        res.status(500).json({ error: "Server error" });
+    }
+})
 
 
 
