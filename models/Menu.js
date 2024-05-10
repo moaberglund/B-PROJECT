@@ -23,6 +23,26 @@ const MenuSchema = new mongoose.Schema({
     }
 });
 
+
+
+//metod för att lagra / registrera
+//menu namn på metod
+MenuSchema.static.addMenu = async function (category, name, price, description) {
+    try {
+        const menu = new this({ category, name, price, description });
+        await menu.save();  //spara
+        return menu;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
+
+
+
+
+
 //export
 const Menu = mongoose.model("Menu", MenuSchema);
 module.exports = Menu;
