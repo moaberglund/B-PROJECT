@@ -11,7 +11,8 @@ const BookingSchema = new mongoose.Schema({
     },
     mail: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     amountOfPeople: {
         type: Number,
