@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require("dotenv").config();
 
+//import av routes
 const loginRouter = require("./routes/login");
 const bookingRoute = require("./routes/bookingRoute");
 const contactRoute = require("./routes/contactRoute");
@@ -13,6 +14,7 @@ const menuRoute = require("./routes/menuRoute");
 
 const app = express();
 const port = process.env.PORT || 3000;
+//middleware
 app.use(bodyparser.json());
 app.use(cors());
 
@@ -23,7 +25,7 @@ app.listen(port, () => {
 
 //ROUTES
 app.use("/api", loginRouter);
-app.use("/api", bookingRoute);
+app.use("/api/booking", bookingRoute);
 app.use("/api", contactRoute);
 app.use("/api", menuRoute);
 
