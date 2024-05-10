@@ -5,9 +5,11 @@ const bodyparser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require("dotenv").config();
+const mongoose = require("mongoose");
+
 
 //import av routes
-const loginRouter = require("./routes/login");
+const loginRouter = require("./routes/loginRoute");
 const bookingRoute = require("./routes/bookingRoute");
 const contactRoute = require("./routes/contactRoute");
 const menuRoute = require("./routes/menuRoute");
@@ -30,6 +32,13 @@ app.use("/api", contactRoute);
 app.use("/api", menuRoute);
 
 
+//anslutning till databas - Atlas MongoDB
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.DATABASE).then(() => {
+    console.log("Ansluten till MongoDB!");
+}).catch((error) => {
+    console.error("Error i koppling till databasen...");
+});
 
 //skyddad, login route
 app.get("/api/login", authenticateToken, (req, res) => {
