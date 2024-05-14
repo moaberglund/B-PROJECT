@@ -55,7 +55,7 @@ function authenticateToken(req, res, next) {
 
     //Token OK
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, username) => {
-        if(err) return res.status(403).json({ message: "Ogiltig JWT!" });
+        if (err) return res.status(403).json({ message: "Ogiltig JWT!" });
 
         req.username = username;
         next();
@@ -63,4 +63,4 @@ function authenticateToken(req, res, next) {
 };
 
 
-module.exports = authenticateToken;
+module.exports = { authenticateToken };
