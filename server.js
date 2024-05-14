@@ -41,7 +41,7 @@ mongoose.connect(process.env.DATABASE).then(() => {
 });
 
 //skyddad, login route
-app.get("/api/login", authenticateToken, (req, res) => {
+app.get("/api/protected", authenticateToken, (req, res) => {
     res.json({ message: "På skyddad route! " });
 });
 
