@@ -24,7 +24,7 @@ const createContact = async (req, res) => {
 //hämta GET
 const getContacts = async (req, res) => {
     try {
-        let result = Contact.find({}); //"hitta" all data i namngiven tabell
+        let result = await Contact.find({}); //"hitta" all data i namngiven tabell
         return res.json(result);
 
     } catch (error) {
