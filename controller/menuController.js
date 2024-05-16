@@ -18,12 +18,12 @@ const createMenu = async (req, res) => {
         const { category, name, price, description } = req.body;
 
         if (!category || !name || !price || !description) {
-            return res.status(400).json({ error: "Tom input, vänligen fyll i alla fält" })
+            return res.status(400).json({ error: "Empty input, please fill out all fields" })
         }
 
         const menu = new Menu({ category, name, price, description });
         await menu.save();
-        res.status(201).json({ message: "Menyinlägg skapat" })
+        res.status(201).json({ message: "Meny object created in database" })
 
     } catch (error) {
         res.status(500).json({ error: "Server error" });
@@ -41,7 +41,7 @@ const updateMenu = async (req, res) => {
 
         //om den inte finns
         if (!menu) {
-            return res.status(404).json({ message: "Kunde ej hitta angivet menyinlägg" })
+            return res.status(404).json({ message: "Could not find selected object" })
         }
         //kolla efter det uppdaterade inlägget
         const updatedMenu = await Menu.findById(id);
@@ -65,10 +65,10 @@ const deleteMenu = async (req, res) => {
 
         //om det inte finns
         if (!menu) {
-            return res.status(404).json({ message: "Kunde ej hitta angivet menyinlägg" })
+            return res.status(404).json({ message: "Could not find selected object" })
         }
 
-        res.status(200).json({ message: "Menyinlägg borttaget!" })
+        res.status(200).json({ message: "Menu object deleted!" })
 
 
     } catch (error) {

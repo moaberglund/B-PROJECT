@@ -8,13 +8,13 @@ const createContact = async (req, res) => {
 
         //Validera
         if (!name || !phone || !mail || !textmessage) {
-            return res.status(400).json({ error: "Tom input, vänligen fyll i alla fält" })
+            return res.status(400).json({ error: "Empty input, please fill out all fields" })
         }
 
         //OK - spara ny bokning
         const contact = new Contact({ name, phone, mail, textmessage });
         await contact.save();
-        res.status(201).json({ message: "Meddelande skickat" })
+        res.status(201).json({ message: "Message sent" })
 
     } catch (error) {
         res.status(500).json({ error: "Server error" });

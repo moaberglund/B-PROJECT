@@ -8,13 +8,13 @@ const createBooking = async (req, res) => {
 
         //Validera
         if (!name || !phone || !mail || !amountOfPeople || !day || !time) {
-            return res.status(400).json({ error: "Tom input, vänligen fyll i alla fält" });
+            return res.status(400).json({ error: "Empty input, please fill out all fields" });
         };
 
         //OK - spara ny bokning
         const booking = new Booking({ name, phone, mail, amountOfPeople, day, time });
         await booking.save();
-        res.status(201).json({ message: "Bokning skapad" });
+        res.status(201).json({ message: "Booking created" });
 
     } catch (error) {
         res.status(500).json({ error: "Server error" });
