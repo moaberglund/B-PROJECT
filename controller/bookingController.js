@@ -25,7 +25,7 @@ const createBooking = async (req, res) => {
 //visa alla bokningar 
 const getBookings = async (req, res) => {
     try {
-        let result = Booking.find({}); //"hitta" all data i namngiven tabell
+        let result = await Booking.find({}); //"hitta" all data i namngiven tabell
         return res.json(result);
 
     } catch (error) {
