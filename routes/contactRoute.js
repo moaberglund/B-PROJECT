@@ -9,7 +9,7 @@ const { createContact, getContacts } = require("../controller/contactController"
 //ROUTES
 
 //post anrop för att skicka ett kontakt meddelande - lägga till
-router.post("/", createContact);
+router.post("/postcontact", createContact);
 
 
 //(skyddad route)!!!
