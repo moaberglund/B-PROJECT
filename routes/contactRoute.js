@@ -16,7 +16,7 @@ router.post("/postcontact", createContact);
 
 //(skyddad route)!!!
 //hämta all kontakt meddelanden
-router.get("/", authenticateToken, getContacts);
+router.get("/getcontact", authenticateToken, getContacts);
 
 
 
