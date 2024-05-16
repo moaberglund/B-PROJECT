@@ -14,7 +14,7 @@ router.get("/", getMenus);
 
 //SKYDDAD ROUTE
 //post - lägg till
-router.post("/", authenticateToken, createMenu);
+router.post("/postmenu", authenticateToken, createMenu);
 
 
 //put - ändra/uppdatera
