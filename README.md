@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
 });
 ```
 
-Respektive CRUD kopplingar ligger sedan i controllers som vidare importeras till routes och slutligen till server.js.
+Respektive CRUD kopplingar ligger sedan i `controllers` som vidare importeras till `routes` och slutligen till `server.js`.
 
 ## Publicering
 Expressapplikationen är kopplad till en Atlas MongoDB databas och hostas via Render.
