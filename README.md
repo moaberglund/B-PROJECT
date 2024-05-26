@@ -17,7 +17,28 @@ I API:et finns stöd för Create, Read, Update och Delete kopplingar.
 Där finns även skyddad rutter som endast koms åt med autentisering men hjälp av JWT.
 
 ## Struktur
-Webbtjänsten har mongoose schemas för att bestämma struktur av data och kontrollera typ av data, att den är ifylld samt längd. Respektive CRUD kopplingar ligger sedan i controllers som vidare importeras till routes och slutligen till server.js.
+Webbtjänsten har mongoose schemas för att bestämma struktur av data och kontrollera typ av data, att den är ifylld samt längd. 
+Ett exempel på struktur av ett schema:
+```
+const UserSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    }
+});
+```
+
+Respektive CRUD kopplingar ligger sedan i controllers som vidare importeras till routes och slutligen till server.js.
 
 ## Publicering
 Expressapplikationen är kopplad till en Atlas MongoDB databas och hostas via Render.
